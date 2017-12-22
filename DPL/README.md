@@ -1,40 +1,4 @@
-Author: Francisco Rovelo
-About: 
-    This is a c++ styled DPL
-    So inside joke-> I originally had all builtin functions(while, for etc) 
-    named as foods such as 'tacos','burritos' becuase in your 201 class I would
-    name random variables in my code as food items... in hindsight it wasnt as funny
-    as my group of friends made it out to be... But I didn't do that because you probably
-    would have failed me if you had to initialize variables like:
-        tacos arr = [....];
-        burrito x = 3;
-        tacosauce(1) {
-            println("tacos are amazing");
-        }
-
-My rant and comments:
-    Bare with me->
-    I barely knew Java but everyone told me to write it in Java because it was "easier" and "10/10 would recommend writing it in Java"
-    but Jesus H. Christ, Eclipse is trash so I wrote this all in Notepad++. It probably looks like cancer but who the heck decided that
-    printing should be this huge statement: system.out.println("WHY IS IT LIKE THIS") like idk why not make it just println("....")...
-    OHHHH!!! and reading in-> It took me like an hour just to find what "PushbackReader" does in layman terms. 
-    PushbackReader -> 
-        "A character-stream reader that allows characters to be pushed back into the stream."
-    Why not just be like->"It's kind of the equivalant to ungetwc in c++ or something like..."
-
-    But, biting my cheek... It was easier than how far I got in my c++ version of this. I guess im just stubborn and want to code in
-    c++ all my life.... even though Java lets you do case statements with strings which I didn't find out until like 2 weeks into 
-    writing this so I had nested if statements when I could've just done a switch... so thats nice I guess... And the memory
-    management.. Which I guess is good and as a programmar, technically, memory management is important but like my gaming PC has 64GBs
-    of RAM so like memory leaks dont really bother me but I guess people using a Mac and stuck with like 8GBs and it's propietary and 
-    you can't change anything so they need to worry about memory management... even though I use a Mac but that's only because the 
-    battery life last like 2 weeks.
-
-    Anyway, Dr. J i've enjoyed having you as a teacher and I transferred in from another, smaller school and can def. say I've learned 
-    more here and from you then I did there. Especially in regards to programming. I didn't even know what a terniary operator was before I came here(Though, is that such a bad thing?).
-
-    So, if you've made it this far then, nice, you probably realized I'm drunk ranting so I'm amazed you're still reading so here's the 
-    index of how this stuff works(it may or may not be the updated to match the syntax of my code, yikes, no im kidding it is):
+Author: Francisco Rovelo     
 
 Index:
     1.0 Running Code
