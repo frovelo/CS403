@@ -1,0 +1,8 @@
+var x = 17;
+println(x);
+
+var y = 18;
+println(y);
+
+var fran = "Fran is a programmer!";
+println(fran);

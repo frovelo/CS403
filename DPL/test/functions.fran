@@ -1,0 +1,13 @@
+define newFunction(a, b) {
+    println(a);
+    println(b);
+    define nestedFunction() {
+       return a + b;
+    }
+    print("a + b is ...");
+    return nestedFunction();
+}
+
+println(newFunction(43, 22));
+var fran = newFunction;
+println(fran(32, 12));

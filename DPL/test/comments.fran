@@ -1,0 +1,18 @@
+# The # character signifies a line comment
+# The #--> character signifies a multiline comment
+# and terminates when <--# is found
+
+# let a = 77;
+let fran = 99;
+# print(fran); # This shouldn't print
+println(fran); # This should print
+
+# print(fran2);
+let fran2 = 90;
+println(fran2); # This should also print
+
+#-->
+println(lusth);
+abc
+123
+<--#

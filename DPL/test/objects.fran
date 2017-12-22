@@ -1,0 +1,22 @@
+define node(value, next) {
+    define getNext() { return next; }
+    return this;
+}
+
+var fran = node(1, null);
+var frann = node(2, fran);
+var frannn = node(3, frann);
+var frannnn = node(4, frannn);
+
+var a = frannnn.next;
+var b = a.next;
+var c = b.next;
+var d = c.next;
+
+var iter = frannnn;
+
+while (iter != null) {
+    print(iter.value);
+    iter = iter.next;
+}
+println();

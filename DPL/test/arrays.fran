@@ -1,0 +1,45 @@
+var fran = ["hello", "this", "is", "a", "test"];
+var multiValued = ["string", 67, "anotherString", 77];
+
+println("The fran array is...");
+println(fran);
+
+println();
+
+println("The multiValued array is...");
+println(multiValued);
+
+println();
+
+println("The 1st value of multiValued...");
+println(multiValued[0]);
+
+println();
+
+println("The 4th value of fran...");
+println(fran[3]);
+
+println();
+
+println("Size of fran is...");
+println(length(fran));
+
+println();
+
+println("Adding a new item to fran...");
+add(fran, "hello");
+println(fran);
+
+println();
+
+println("fran's new size should be 6...");
+println(length(fran));
+
+println();
+
+println("Removing 'this' from fran");
+remove(fran, 1);
+println(fran);
+
+println("Size of fran should be 5 again...");
+println(length(fran));

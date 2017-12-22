@@ -1,0 +1,14 @@
+define fib(n) {
+    if (n <= 1) {
+        return n;
+    }
+    whatelse {
+        return fib(n-1) + fib(n-2);
+    }
+}
+
+println("fib of 8 should be 21...");
+println(fib(8));
+
+println("fib of 6 should be 8...");
+println(fib(6));

@@ -1,0 +1,15 @@
+var fran = 56;
+
+if (100 < 40) {
+    println("100 is less than 40...");
+} whatelse if (fran < 54) {
+    println("fran is less than 54...");
+} whatelse {
+    println("100 is not less than 40 and fran is not less than 54!");
+}
+
+if (fran > 4) {
+    println("fran is greater than 4!"); # im actually numero 1 :)
+} whatelse {
+    println("This shouldn't print");
+}

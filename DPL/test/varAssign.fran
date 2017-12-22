@@ -1,0 +1,8 @@
+var fran = 54;
+print("fran should be 54...");
+print(fran);
+println();
+fran = 90;
+print("fran should now be 90...");
+print(fran);
+println();

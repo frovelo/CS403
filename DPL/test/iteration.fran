@@ -1,0 +1,19 @@
+define iter(i) {
+    print(i);
+    if (i < 10) {
+        iter(i + 1);
+    }
+}
+
+println("TESTING ITERATION...");
+iter(0);
+println();
+
+println("TESTING WHILE LOOP...");
+
+var i = 0;
+while(i <= 10) {
+    print(i);
+    i = i + 1;
+}
+println();

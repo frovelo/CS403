@@ -1,0 +1,21 @@
+define lambdaTest(a, b) {
+    return define () {
+               return a + b;
+           };
+}
+
+println(lambdaTest(5, 5));
+
+var fran = lambdaTest;
+println(fran(15, 15));
+
+define a(val) {
+    return val;
+}
+
+define b(val) {
+    return val;
+}
+
+println(a(1000) + b(1000));
+println();

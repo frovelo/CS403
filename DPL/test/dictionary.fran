@@ -1,0 +1,340 @@
+# Node Class #
+define node(key, value, parent) {
+    var key = key;
+    var val = value;
+    var p = parent;
+    var l = null;
+    var r = null;
+    var lHeight = 0;
+    var rHeight = 0;
+    var height = 0;
+    return this;
+}
+
+# AVL Tree class #
+define avl() {
+
+    var size = 0;
+    var root = null;
+
+    define max(x, y) {
+        if (x > y) {
+            return x;
+        } whatelse {
+            return y;
+        }
+    }
+
+    define setBalance(x) {
+        if (x.l == null) {
+            x.lHeight = 0;
+        } whatelse {
+            var left = x.l;
+            x.lHeight = left.height;
+        }
+        if (x.r == null) {
+            x.rHeight = 0;
+        } whatelse {
+            x.rHeight = x.r.height;
+        }
+        x.height = max(x.lHeight, x.rHeight) + 1;
+        var p = x.p;
+        if (p != null) {
+            if (isRight(x)) {
+                p.rHeight = x.height;
+            } whatelse {
+                p.lHeight = x.height;
+            }
+        }
+    }
+
+    define sibling(x) {
+        if (x == x.p.l) {
+            return x.p.r;
+        } whatelse {
+            return x.p.l;
+        }
+    }
+
+    define bFactor(x) {
+        return x.lHeight - x.rHeight;
+    }
+
+    define isRight(x) {
+        return x == x.p.r;
+    }
+
+    define isLeft(x) {
+        return x == x.p.l;
+    }
+
+    define favorSibling(x) {
+        if (isRight(x)) {
+            if (bFactor(x.p) == 1) { return true; }
+            whatelse if (bFactor(x.p) == neg(1)) {
+                return false;
+            } whatelse { return false; }
+        } whatelse {
+            if (bFactor(x.p) == 1) { return false; }
+            whatelse if (bFactor(x.p) == neg(1)) {
+                return true;
+            } whatelse { return false; }
+        }
+    }
+
+    define isBalanced(x) {
+        if (bFactor(x) == 1) {
+            return true;
+        } whatelse if (bFactor(x) == neg(1)) {
+            return true;
+        } whatelse if (bFactor(x) == 0) {
+            return true;
+        } whatelse {
+            return false;
+        }
+    }
+
+    define favoriteChild(x) {
+        if (bFactor(x) == 1) {
+            return x.l;
+        } whatelse if (bFactor(x) == neg(1)) {
+            return x.r;
+        } whatelse {
+            return null;
+        }
+    }
+
+    define notLinear(p, x, y) {
+        if (p.r == x) {
+            if (x.r == y) {
+                return false;
+            }
+        } whatelse if (p.l == x) {
+            if (x.l == y) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    define rotateYX(y, x) {
+        if (isLeft(y)) {
+            rotateRight(y, x);
+        } whatelse {
+            rotateLeft(y, x);
+        }
+    }
+
+    define rotateYP(y, p) {
+        if (isLeft(y)) {
+            rotateRight(y, p);
+        } whatelse {
+            rotateLeft(y, p);
+        }
+    }
+
+    define rotateXP(x, p) {
+        if (isRight(x)) {
+            rotateLeft(x, p);
+        } whatelse {
+            rotateRight(x, p);
+        }
+    }
+
+    define rotateLeft(a, b) {
+        var left = a.l;
+        var p = b.p;
+        if (p == null) {
+            root = a;
+        } whatelse {
+            if (isLeft(b)) {
+                p.l = a;
+            } whatelse {
+                p.r = a;
+            }
+        }
+        a.l = b;
+        b.r = left;
+        if (left != null) {
+            left.p = b;
+        }
+        b.p = a;
+        a.p = p;
+    }
+
+    define rotateRight(a, b) {
+        var right = a.r;
+        var p = b.p;
+        if (p == null) {
+            root = a;
+        } whatelse {
+            if (isLeft(b)) {
+                p.l = a;
+            } whatelse {
+                p.r = a;
+            }
+        }
+        a.r = b;
+        b.l = right;
+        if (right != null) {
+            right.p = b;
+        }
+        b.p = a;
+        a.p = p;
+    }
+
+    define fix(x) {
+        while (x != root) {
+            if (favorSibling(x)) {
+                setBalance(x.p);
+                x = root;
+            } whatelse if (isBalanced(x.p)) {
+                setBalance(x.p);
+                x = x.p;
+            } whatelse {
+                var y = favoriteChild(x);
+                var p = x.p;
+                if (y != null) {
+                    if (notLinear(p, x, y)) {
+                        rotateYX(y, x);
+                        rotateYP(y, p);
+                        setBalance(x);
+                        setBalance(p);
+                        setBalance(y);
+                    }
+                } whatelse {
+                    rotateXP(x, p);
+                    setBalance(p);
+                    setBalance(x);
+                }
+                x = root;
+            }
+        }
+    }
+
+    define insert(k, v) {
+        size = size + 1;
+
+        var new = node(k, v, null);
+
+        if (root == null) {
+            root = new;
+        } whatelse {
+            var p = root;
+            while (p != null) {
+                new = node(k, v, p);
+                if (k == p.key) {
+                    p.val = v;
+                    p = null;
+                } whatelse if (k < p.key) {
+                    if (p.l == null) {
+                        p.l = new;
+                        p.lHeight = 1;
+                        fix(p.l);
+                        p = null;
+                    } whatelse {
+                        p = p.l;
+                    }
+                } whatelse {
+                    if (p.r == null) {
+                        p.r = new;
+                        p.rHeight = 1;
+                        fix(p.r);
+                        p = null;
+                    } whatelse {
+                        p = p.r;
+                    }
+                }
+            }
+        }
+    }
+
+    define find(k) {
+        var p = root;
+        var a = null;
+        while (p != null) {
+            if (p.key == k) {
+                a = p.val;
+                p = null;
+            } whatelse {
+                if (k < p.key) {
+                    p = p.l;
+                } whatelse {
+                    p = p.r;
+                }
+            }
+        }
+        return a;
+    }
+
+    return this;
+}
+
+# Dictionary Class #
+define dictionary() {
+    var tree = avl();
+
+    define addItem(key, value) {
+        tree.insert(key, value);
+    }
+
+    define set(key, value) {
+        tree.insert(key, value);
+    }
+
+    define size() {
+        tree.size;
+    }
+
+    define get(key) {
+        return tree.find(key);
+    }
+
+    return this;
+}
+
+var d = dictionary();
+d.addItem("fran1", "Wow");
+d.addItem("fran2", "amamzon");
+d.addItem("fran3", "is");
+d.addItem("fran4", "real");
+d.addItem("fran5", "This");
+d.addItem("fran6", "is");
+d.addItem("fran7", "it");
+d.addItem("fran8", "man");
+d.addItem("fran9", 100);
+
+println();
+println("Contents of dictionary are ..");
+println(d.get("fran1"));
+println(d.get("fran2"));
+println(d.get("fran3"));
+println(d.get("fran4"));
+println(d.get("fran5"));
+println(d.get("fran6"));
+println(d.get("fran7"));
+println(d.get("fran8"));
+println(d.get("fran9"));
+
+
+println();
+
+print("Size of dictionary is:");
+println(d.size());
+
+println();
+
+println("Change value of fran3!");
+print("fran3's value is currently...");
+println(d.get("fran3"));
+print("fran3's new value is now...");
+d.set("fran3", "updated");
+println(d.get("fran3"));
+println();
+println("Change value of fran9!");
+print("fran9's value is currently:");
+println(d.get("fran9"));
+print("fran9's new value is..");
+d.set("fran9", 100);
+println(d.get("fran9"));
+println();
